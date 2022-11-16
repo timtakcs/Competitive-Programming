@@ -6,6 +6,12 @@ int main() {
     int q;
     int n;
 
+    // min heap
+    // priority_queue<int> heap;
+
+    // max heap
+    // priority_queue<int, vector<int>, greater<int>> heap;
+
     cin >> n >> q;
 
     long long x[n];
