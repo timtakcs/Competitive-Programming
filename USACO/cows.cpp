@@ -38,7 +38,7 @@ int main() {
                 intvals.push_back(t[i]);
             }
             else {
-                intvals[index].s = t[i].s - intvals[index].f;
+                intvals[index].s = t[i].s;
             }
         }  
     }
@@ -50,7 +50,9 @@ int main() {
         idle = max(idle, intvals[i+1].f - intvals[i].s);
     }
 
-    for ()
+    for (int i = 0; i < intvals.size(); i++) {
+        cont = max(cont, intvals[i].s - intvals[i].f);
+    }
 
     fout << cont << " " << idle << endl;
 }
