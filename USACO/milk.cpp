@@ -24,23 +24,15 @@ int main() {
         m[i] = mp(a, b);
     }
 
-    int total = 0;
     int price = 0;
     sort(m.begin(), m.end());
     int idx = 0;
-    if(t) {
-        while (total <= t) {
-            if (total + m[idx].s <= t) {
-                price += m[idx].f * m[idx].s;
-                total += m[idx].s;
-                idx++;
-            }
-            else {
-                int dif = total + m[idx].s - t;
-                price += m[idx].f * dif;
-                break;
-            }
-        }
+    for (idx; idx < m.size() && t > 0; idx++) {
+        t -= m[idx].s;
+        price += m[idx].s * m[idx].f;
+    }
+    if (t < 0) {
+        price -= abs(t) * m[idx-1].f;
     }
 
     fout << price << endl;
