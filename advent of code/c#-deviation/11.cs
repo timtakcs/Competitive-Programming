@@ -7,11 +7,11 @@ namespace problem_11 {
             public long factor;
             public int recipient1;
             public int recipient2;
-            public int test;
+            public long test;
             public string op;
             public long count;
 
-            public monkey(int ID, Queue<long> itms, int recipient_1, int recipient_2, long fctr, int test, string opp) {
+            public monkey(int ID, Queue<long> itms, int recipient_1, int recipient_2, long fctr, long test, string opp) {
                 this.id = ID;
                 this.items = itms;
                 this.recipient1 = recipient_1;
@@ -99,7 +99,7 @@ namespace problem_11 {
         List<monkey> parse_monkeys(List<string> lines) {
             List<monkey> monkeys = new List<monkey>();
 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 4; i++) {
                 List<string> id_line = tokenize(lines[i * 7]);
                 int id = 1;
                 Queue<long> items = new Queue<long>();
@@ -107,7 +107,7 @@ namespace problem_11 {
                 List<string> line2 = tokenize(lines[i * 7 + 1]);
                 for (int j = line2.Count - 1; j > 0; j--) {
                     if (line2[j] == "items:") break;
-                    items.Enqueue(Convert.ToInt64(Int32.Parse(line2[j])))1;
+                    items.Enqueue(Convert.ToInt64(Int32.Parse(line2[j])));
                 }
                 items = new Queue<long>(items.Reverse());
 
@@ -124,7 +124,7 @@ namespace problem_11 {
                 }
 
                 List<string> test_line = tokenize(lines[i*7 + 3]);
-                int test = Int32.Parse(test_line[test_line.Count - 1]);
+                long test = Int32.Parse(test_line[test_line.Count - 1]);
 
                 List<string> r1 = tokenize(lines[i*7 + 4]);
                 int rec1 = Int32.Parse(r1[r1.Count - 1]);
@@ -143,7 +143,7 @@ namespace problem_11 {
         public List<string> read_lines() {
             List<string> lines = new List<string>();
 
-            foreach (string line in System.IO.File.ReadLines("input.in")) {  
+            foreach (string line in System.IO.File.ReadLines("small.in")) {  
                lines.Add(line);
             }
 
