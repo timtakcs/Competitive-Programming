@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/timur/Programming/Competitive Programming/advent of code/test/test.csproj",
+      "projectUniqueName": "/home/timur/Programming/Competitive Programming/advent of code/c#-deviation/test.csproj",
       "projectName": "test",
-      "projectPath": "/home/timur/Programming/Competitive Programming/advent of code/test/test.csproj",
+      "projectPath": "/home/timur/Programming/Competitive Programming/advent of code/c#-deviation/test.csproj",
       "packagesPath": "/home/timur/.nuget/packages/",
-      "outputPath": "/home/timur/Programming/Competitive Programming/advent of code/test/obj/",
+      "outputPath": "/home/timur/Programming/Competitive Programming/advent of code/c#-deviation/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/timur/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d2F4e97cvvG5bvDNr7XWa5mmarl1bBlTzZzxDViWrRNTKGJ11dx9xs5UezKqFV3Lt1K5plkm1Me17mBbUdyPvg==",
+  "dgSpecHash": "P4j6HQ/wa9CTB2STbFA5n3Ob+WSfYooZ3gqHWcin6NIoq4QkINP2JO/fYovbTS1i8SRs097I/JrN5xIAuSAFHg==",
   "success": true,
-  "projectFilePath": "/home/timur/Programming/Competitive Programming/advent of code/test/test.csproj",
+  "projectFilePath": "/home/timur/Programming/Competitive Programming/advent of code/c#-deviation/test.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

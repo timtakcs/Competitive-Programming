@@ -3,7 +3,7 @@ namespace capsher_ {
         public void driver() {
             Console.WriteLine("hello world");
 
-            
+            // lmao that was so easy i could just do it in the browser
         }
 
         public List<string> read_lines() {
