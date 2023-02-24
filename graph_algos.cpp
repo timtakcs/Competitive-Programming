@@ -72,3 +72,22 @@ void floyd_warshall(vector<vector<pair<int, int>>> &adj, vector<vector<ll>> &dis
         }
     }
 }
+
+void bfs(vector<vector<int>> &adj, int src, int n) {
+    queue<int> q;
+    vector<bool> vis(n, false);
+
+    q.push(src);
+    vis[src] = true;
+
+    while (q.size()) {
+        int u = q.front(); q.pop();
+
+        for (auto n: adj[u]) {
+            if (!vis[n]) {
+                vis[n] = true;
+                q.push(n);        
+            }
+        }
+    }
+}
