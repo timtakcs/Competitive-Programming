@@ -23,4 +23,21 @@ void swap(vector<int> &arr, int a, int b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while (t--) {
+        unsigned int a = 0;
+        unsigned int b = INT32_MAX;
+        unsigned int c = 0;
+        unsigned int d = 0;
+
+        ll n; cin >> n;
+
+        for (int i = 0; i < 32; i++) {
+            if ((1 << i) & n) a |= (1 << i);
+        }
+
+        cout << a << " " << b << " " << c << " " << d << " " << endl;
+        cout << (((a & b) | c) ^ d) << endl;
+    }
 }

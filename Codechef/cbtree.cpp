@@ -15,12 +15,20 @@ void setIO(string name = "") {
     ios_base::sync_with_stdio(0); cin.tie(0); // see Fast Input & Output
 }
 
-void swap(vector<int> &arr, int a, int b) {
-    int temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
-}
-
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while (t--) {
+        int n; cin >> n;
+        vector<vector<pair<int, int>>> tree(n);
+
+        for (int i = 0; i < n - 1; i++) {
+            int u, v, w; cin >> u >> v >> w;
+            tree[u].push_back(mp(v, w));
+            tree[v].push_back(mp(u, w));
+        }
+
+        
+    }
 }

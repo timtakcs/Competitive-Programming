@@ -15,12 +15,22 @@ void setIO(string name = "") {
     ios_base::sync_with_stdio(0); cin.tie(0); // see Fast Input & Output
 }
 
-void swap(vector<int> &arr, int a, int b) {
-    int temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
-}
-
 int main() {
     setIO();
+
+    int t; cin >> t;
+    // int t = 1;
+    while(t--) {
+        ll n; cin >> n;
+        int outer = n / 2;
+        ll total = 0;
+
+        for (ll i = 1; i <= outer; i++) {
+            total += i * i;
+        }
+
+        cout << total * 8 << endl;
+    }
+
+
 }

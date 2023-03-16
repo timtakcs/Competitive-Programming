@@ -18,7 +18,18 @@ void setIO(string name = "") {
 int main() {
     setIO();
 
-    int n; cin >> n;
+    int t; cin >> t;
+    while(t--) {
+        int n; cin >> n;
+        map<int, int> occ;
+        int maxi = 0;
+        for (int i = 0; i < n; i++) {
+            int x; cin >> x;
+            if (!occ.count(x)) occ[x] = 1;
+            else occ[x]++;
+            maxi = max(maxi, occ[x]);
+        }
 
-    
+        cout << n - maxi << endl;
+    }
 }
