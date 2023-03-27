@@ -23,4 +23,11 @@ void swap(vector<int> &arr, int a, int b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while(t--) {
+        int n, m, i1, j1, i2, j2; cin >> n >> m >> i1 >> j1 >> i2 >> j2;
+
+        
+    }
 }

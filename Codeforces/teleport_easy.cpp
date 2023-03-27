@@ -23,4 +23,25 @@ void swap(vector<int> &arr, int a, int b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while(t--) {
+        int n, c; cin >> n >> c;
+        vector<int> a(n);
+        for(int i = 0; i < n; i++) {
+            int x; cin >> x;
+            a[i] = x + i + 1;
+        }
+
+        sort(a.begin(), a.end());
+
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            c -= a[i];
+            if (c < 0) break;
+            count++;
+        }
+
+        cout << count << endl;
+    }
 }

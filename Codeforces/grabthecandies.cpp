@@ -23,4 +23,24 @@ void swap(vector<int> &arr, int a, int b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while(t--) {
+        int n; cin >> n;
+        vector<int> a(n);
+        for(int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        int odd = 0;
+        int even = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (a[i] % 2 == 1) odd += a[i];
+            else even += a[i];
+        }
+
+        if (odd < even) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
 }
