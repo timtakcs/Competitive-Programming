@@ -91,3 +91,37 @@ void bfs(vector<vector<int>> &adj, int src, int n) {
         }
     }
 }
+
+// BRIDGES IN A GRAPH
+
+void dfs_bridges(vector<vector<int>> &adj, vector<int> &tin, vector<int> &low, int &t, vector<bool> &vis, int v, int p = -1) {
+    vis[v] = true;
+    tin[v] = low[v] = t++;
+    for (int to : adj[v]) {
+        if (to == p) continue;
+        if (vis[to]) {
+            low[v] = min(low[v], tin[to]);
+        } else {
+            dfs_bridges(adj, tin, low, t, vis, to, v);
+            low[v] = min(low[v], low[to]);
+        }
+    }
+}
+
+bool has_bridge(int n, vector<vector<int>> &adj, vector<int> &tin, vector<int> &low) {
+    tin[0] = 1;
+    low[0] = 1;
+
+    int t = 2;
+    vector<bool> vis(n, false);
+
+    dfs_bridges(adj, tin, low, t, vis, 0);
+
+    for (int i = 1; i < n; i++) {
+        if (tin[i] == low[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
