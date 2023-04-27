@@ -1,3 +1,7 @@
-2
-1
-3
+def foo 3
+calc foo + bar =
+def bar 7
+def x 14
+calc foo + bar =
+def foo 7
+calc foo + bar =

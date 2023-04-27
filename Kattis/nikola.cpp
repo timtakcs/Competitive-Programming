@@ -22,18 +22,17 @@ void swap(vector<int> &arr, int a, int b) {
     arr[b] = temp;
 }
 
-int best = INF;
+struct p {
+    int k;
+    int cost;
+    int last;
+};
 
-int solve(vector<int> &arr, int k, int last, int n, int score) {
-    if (k == n) {
-        best = min(score + arr[k], best);
-        return best;
+struct comp {
+    bool operator()(p &lhs, p &rhs) {
+        return lhs.cost > rhs.cost;
     }
-    if (k > n || k < 1) return INF;
-
-    return min(solve(arr, k + last + 1, last + 1, n, score + arr[k]),
-               solve(arr, k - last, last, n, score + arr[k]));
-}
+};
 
 int main() {
     setIO();
@@ -44,5 +43,26 @@ int main() {
         cin >> arr[i + 1];
     }
 
-    cout << solve(arr, 2, 1, n, 0) << endl;
+    priority_queue<p, vector<p>, comp> pq;
+    set<pair<int, int>> vis;
+
+    pq.push({2, arr[2], 1});
+    vis.insert({2, 1});
+
+    while (pq.size()) {
+        p cur = pq.top(); pq.pop();
+        if (cur.k == n) {
+            cout << cur.cost << endl;
+            return 0;
+        } else {
+            if (cur.k + cur.last + 1 <= n && vis.find({cur.k + cur.last + 1, cur.last + 1}) == vis.end()) {
+                pq.push({cur.k + cur.last + 1, cur.cost + arr[cur.k + cur.last + 1], cur.last + 1});
+                vis.insert({cur.k + cur.last + 1, cur.last + 1});
+            }
+            if (cur.k - cur.last >= 1 && vis.find({cur.k - cur.last, cur.last}) == vis.end()) {
+                pq.push({cur.k - cur.last, cur.cost + arr[cur.k - cur.last], cur.last});
+                vis.insert({cur.k - cur.last, cur.last});
+            }
+        }
+    }
 }

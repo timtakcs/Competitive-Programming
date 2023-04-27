@@ -1,4 +1,25 @@
-#include "graph_algos.h"
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define f first
+#define s second
+#define mp make_pair
+#define pb push_back
+#define mt make_tuple
+#pragma GCC optimize "trapv"
+
+void swap(vector<int> &arr, int a, int b) {
+    int temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+}
+
+// template code above to avoid red lines in the algos
+
+// -------------------
+// SHORTEST PATH
+// -------------------
 
 void dijkstra(int v, vector<vector<pair<ll, int>>> &adj, vector<ll> &dist, int n) {
     priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> q;
@@ -73,6 +94,10 @@ void floyd_warshall(vector<vector<pair<int, int>>> &adj, vector<vector<ll>> &dis
     }
 }
 
+// ------------------------
+// BASICS
+// ------------------------
+
 void bfs(vector<vector<int>> &adj, int src, int n) {
     queue<int> q;
     vector<bool> vis(n, false);
@@ -92,7 +117,18 @@ void bfs(vector<vector<int>> &adj, int src, int n) {
     }
 }
 
-// BRIDGES IN A GRAPH
+void dfs(vector<vector<int>> &adj, int v, int n, vector<bool> &vis) {
+    for (auto u: adj[v]) {
+        if (!vis[u]) {
+            vis[u] = true;
+            dfs(adj, u, n, vis);
+        }
+    }
+}
+
+// ------------------------
+// BRIDGES AND ARTICULATION POINTS
+// ------------------------
 
 void dfs_bridges(vector<vector<int>> &adj, vector<int> &tin, vector<int> &low, int &t, vector<bool> &vis, int v, int p = -1) {
     vis[v] = true;
@@ -125,3 +161,92 @@ bool has_bridge(int n, vector<vector<int>> &adj, vector<int> &tin, vector<int> &
     return false;
 }
 
+// ------------------------
+// TOPOLOGICAL SORTING
+// ------------------------
+
+bool check_cycle(vector<vector<int>> &adj, vector<bool> &vis, stack<int> &s, vector<int> &ans, int v, int n) {
+    unordered_map<int, int> pos;
+    int index = 0;
+
+    while (!s.empty()) {
+        pos[s.top()] = index;
+
+        ans.push_back(s.top());
+ 
+        index++;
+        s.pop();
+    }
+ 
+    for (int x = 0; x < n; x++) {
+        for (auto u: adj[x]) {
+            if (pos[x] > pos[u]) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+void topo_dfs(vector<vector<int>> &adj, int v, int n, vector<bool> &vis, stack<int> &s) {
+    for (auto u: adj[v]) {
+        if (!vis[u]) {
+            vis[u] = true;
+            topo_dfs(adj, u, n, vis, s);
+        }
+    }
+    s.push(v);
+}
+
+// Kahn's Algorithm
+
+vector<int> kahn(vector<vector<int>> &adj, int n, vector<int> &in_deg) {
+    vector<int> ans;
+    queue<int> q;
+
+    for (int i = 0; i < n; i++) {
+        if (in_deg[i] == 0) {
+            q.push(i);
+        }
+    }
+
+    while (q.size()) {
+        int u = q.front(); q.pop();
+        ans.push_back(u);
+
+        for (auto v: adj[u]) {
+            in_deg[v]--;
+            if (in_deg[v] == 0) {
+                q.push(v);
+            }
+        }
+    }
+
+    return ans;
+}
+
+// ------------------------
+// PATH COMPRESSION UNION FIND
+// ------------------------
+
+int find(int x, vector<int> &link) {
+    while (x != link[x]) {
+        link[x] = link[link[x]];
+        x = link[x];
+    }
+    return x;
+}
+
+void unite(int a, int b, vector<int> &link, vector<int> &size) {
+    a = find(a, link);
+    b = find(b, link);
+
+    if (a == b) return;
+
+    if (size[a] > size[b]) {
+        swap(a, b);
+    } 
+    link[b] = a;
+    size[a] += size[b];                       
+}

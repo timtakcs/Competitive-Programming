@@ -5,6 +5,7 @@ using namespace std;
 #define f first
 #define s second
 #define mp make_pair
+#define pb push_back
 #define mt make_tuple
 #pragma GCC optimize "trapv"
 
@@ -25,21 +26,20 @@ int main() {
     setIO();
 
     int n; cin >> n;
-    double tape = 0;
-    double add = pow(2, -3.0/ 4);
-    ll needed = 2;
-    while(n-- > 1) {
-        tape += needed / 2 * add;
-        ll num;
-        cin >> num;
-        if(num >= needed) {
-            cout << setprecision(10) << fixed << tape;
-            return 0;
-        }
-        needed -= num;
-        needed *= 2;
-        add /= pow(2,.5);
+    vector<int> a(n);
+    for (int i =0 ; i < n; i++) {
+        cin >> a[i];
     }
-    cout << "impossible";
-    return 0;
+
+    sort(a.begin(), a.end());
+
+    int ans = n;
+
+    for (int i = 0; i < n; i++) {
+        int cur = n - i - 1;
+        cur += a[i];
+        ans = min(ans, cur);
+    }
+
+    cout << ans << endl;
 }

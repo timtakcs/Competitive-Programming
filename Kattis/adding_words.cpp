@@ -50,6 +50,11 @@ int main() {
         if (tokens[0] == "def") {
             s[tokens[1]] = stoi(tokens[2]);
             m[stoi(tokens[2])] = tokens[1];
+
+            // for (auto i : s) {
+            //     cout << i.first << " " << i.second << endl;
+            // }
+
         } else if (tokens[0] == "calc") {
             int factor = 1;
             int sum = 0;

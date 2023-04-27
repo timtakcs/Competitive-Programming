@@ -16,12 +16,22 @@ void setIO(string name = "") {
     ios_base::sync_with_stdio(0); cin.tie(0); 
 }
 
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
+void swap(vector<int> &arr, int a, int b) {
+    int temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
 }
 
 int main() {
     setIO();
+
+    ll n; cin >> n;
+
+    ll range = 4294967296;
+
+    ll loops = range % n + 1;
+
+    unsigned ll total = (range * loops) / n;
+
+    cout << total - n << endl;
 }

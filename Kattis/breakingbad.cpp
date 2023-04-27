@@ -32,7 +32,7 @@ bool bipartile(int &idx, map<string, vector<string>> &adj, vector<set<string>> &
 
         vis[v] = true;
 
-        int idx = (sets[0].count(v) > 0) ? 0 : 1;
+        int idx = !(sets[0].count(v) > 0);
 
         for (auto u: adj[v]) {
             if (!sets[!idx].count(u) && !sets[idx].count(u)) {
