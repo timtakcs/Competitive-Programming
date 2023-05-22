@@ -7,7 +7,6 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define mt make_tuple
-#define pii pair<int, int>
 #pragma GCC optimize "trapv"
 
 constexpr int INF = 1e9;
@@ -25,4 +24,15 @@ void swap(int &a, int &b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while(t--) {
+        string s; cin >> s;
+        string cf = "codeforces";
+        int count = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if(s[i] != cf[i]) count++;
+        }
+        cout << count << endl;
+    }
 }

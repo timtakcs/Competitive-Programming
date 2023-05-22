@@ -7,7 +7,6 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define mt make_tuple
-#define pii pair<int, int>
 #pragma GCC optimize "trapv"
 
 constexpr int INF = 1e9;
@@ -25,4 +24,29 @@ void swap(int &a, int &b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+
+    vector<vector<int>> stack(2024, vector<int>(2024));
+
+    int x = 0;
+    int y = 0;
+
+    int count = 1;
+
+    for (int i = 0; i < 64; i++) {
+        y = i;
+        x = 0;
+        while (y >= 0) {
+            stack[y][x] = count * count;
+            count++;
+            y--; x++;
+        }
+    }
+
+    while(t--) {
+        int n; cin >> n;
+
+        
+    }
 }

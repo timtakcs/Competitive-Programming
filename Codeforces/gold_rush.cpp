@@ -7,7 +7,6 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define mt make_tuple
-#define pii pair<int, int>
 #pragma GCC optimize "trapv"
 
 constexpr int INF = 1e9;
@@ -23,6 +22,26 @@ void swap(int &a, int &b) {
     b = temp;
 }
 
+bool helper(int n, int m) {
+    if (n == m) return true;
+    if (n%3 != 0 || m > n) return false;
+    else {
+        int b = n / 3;
+        int a = b * 2;
+
+        return (helper(a, m) || helper(b, m));
+    }
+}
+
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while(t--) {
+        int n, m; cin >> n >> m;
+        
+        bool valid = helper(n, m);
+        if (valid) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
 }

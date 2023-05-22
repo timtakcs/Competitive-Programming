@@ -25,4 +25,18 @@ void swap(int &a, int &b) {
 
 int main() {
     setIO();
+
+    int t; cin >> t;
+    while (t--) {
+        int n; cin >> n;
+        string s; cin >> s;
+
+        set<string> ans;
+
+        for (int i = 0; i < n - 1; i++) {
+            ans.insert(s.substr(i, 2));
+        }
+
+        cout << ans.size() << endl;
+    }
 }
