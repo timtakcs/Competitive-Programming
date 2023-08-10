@@ -19,7 +19,7 @@ int main() {
     setIO();
 
     int t; cin >> t;
-    // int t = 1;
+
     while(t--) {
         ll n; cin >> n;
         int outer = n / 2;
@@ -31,6 +31,4 @@ int main() {
 
         cout << total * 8 << endl;
     }
-
-
 }

@@ -10,8 +10,8 @@ using namespace std;
 #define pii pair<int, int>
 #pragma GCC optimize "trapv"
 
-constexpr int INF = 1e9;
-constexpr int MOD = 1e9 + 7;
+// constexpr int INF = 1e9;
+// constexpr int MOD = 1e9 + 7;
 
 void setIO(string name = "") { 
     ios_base::sync_with_stdio(0); cin.tie(0); 
