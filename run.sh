@@ -8,7 +8,7 @@ fi
 FILE_NAME=$(basename -- "$1")
 BASE_NAME="${FILE_NAME%.*}"
 
-g++ "$1" -o "a.out" -std=c++14 -Wall
+g++ "$1" -o "a.out" -std=c++17 -Wall
 
 # If compilation is successful, run the program
 if [ $? -eq 0 ]; then

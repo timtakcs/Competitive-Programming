@@ -36,13 +36,16 @@ int main() {
 
         if (c == 'F') {
             int x; cin >> x;
-            if (s.find(x) == s.end()) {
+            if (s.find(x) != s.end()) {
+                s.erase(x);
+            }
+            else {
                 s.insert(x);
             }
         } else if (c == 'C') {
             int a, b; cin >> a >> b;
-            int lower = distance(s.begin(), s.lower_bound(a + 1));
-            int upper = distance(s.begin(), s.upper_bound(b - 1));
+            int lower = distance(s.begin(), s.lower_bound(a));
+            int upper = distance(s.begin(), s.upper_bound(b));
 
             cout << upper - lower << endl;
         }
