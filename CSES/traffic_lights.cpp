@@ -1,5 +1,6 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#include <set>
 #define ll long long
 #define f first
 #define s second
@@ -7,6 +8,7 @@
 #define pb push_back
 #define mt make_tuple
 #define pii pair<int, int>
+#pragma GCC optimize "trapv"
 
 using namespace std;
 
@@ -19,4 +21,15 @@ void setIO(string name = "") {
 
 int main() {
     setIO();
+
+    int x, n; cin >> x >> n;
+    set<int> a;
+
+    for (int i = 0; i < n; i++) {
+        int b; cin >> b;
+        a.insert(b);
+
+        
+    }
+
 }

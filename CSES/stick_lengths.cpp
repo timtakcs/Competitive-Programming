@@ -1,5 +1,5 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define ll long long
 #define f first
 #define s second
@@ -7,6 +7,7 @@
 #define pb push_back
 #define mt make_tuple
 #define pii pair<int, int>
+#pragma GCC optimize "trapv"
 
 using namespace std;
 
@@ -19,4 +20,17 @@ void setIO(string name = "") {
 
 int main() {
     setIO();
+
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    sort(a.begin(), a.end());
+    int mid = n / 2;
+    ll c = 0;
+    for (int i = 0; i < n; i++) {
+        c += (ll)abs(a[i] - a[mid]);
+    }
+
+    cout << c << endl;
 }

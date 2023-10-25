@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.py": "python",
         "iostream": "cpp",
         "ostream": "cpp",
         "cctype": "cpp",
@@ -87,6 +88,8 @@
         "valarray": "cpp",
         "variant": "cpp",
         "ios": "cpp",
-        "__tree": "cpp"
-    }
+        "__tree": "cpp",
+        "__split_buffer": "cpp"
+    },
+    "python.analysis.typeCheckingMode": "off"
 }

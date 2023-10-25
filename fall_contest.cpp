@@ -1,5 +1,5 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define ll long long
 #define f first
 #define s second
@@ -7,6 +7,7 @@
 #define pb push_back
 #define mt make_tuple
 #define pii pair<int, int>
+#pragma GCC optimize "trapv"
 
 using namespace std;
 
@@ -19,4 +20,8 @@ void setIO(string name = "") {
 
 int main() {
     setIO();
+
+    string s; cin >> s;
+    if (s[0] == '5' && s[1] == '5' && s[2] == '5') cout << 1 << endl;
+    else cout << 0 << endl;
 }
