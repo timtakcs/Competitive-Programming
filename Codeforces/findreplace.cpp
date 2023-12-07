@@ -1,5 +1,6 @@
 #include <iostream>
 #include<bits/stdc++.h>
+#include <map>
 using namespace std;
 #define ll long long
 #define f first
@@ -34,7 +35,6 @@ int main() {
             if (!pos.count(s[i])) pos[s[i]] = i;
             else {
                 if ((i - pos[s[i]]) % 2 == 1) {
-                    // cout << s[i] << " " << i << " " << pos[s[i]] << "<-" <<endl;
                     cout << "NO" << endl;
                     flag = false;
                     break;

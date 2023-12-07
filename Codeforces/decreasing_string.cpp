@@ -1,5 +1,6 @@
 #include <iostream>
 #include<bits/stdc++.h>
+#include <stack>
 #define ll long long
 #define f first
 #define s second
@@ -7,7 +8,6 @@
 #define pb push_back
 #define mt make_tuple
 #define pii pair<int, int>
-#pragma GCC optimize "trapv"
 
 using namespace std;
 
@@ -25,35 +25,25 @@ int main() {
     while (t--) {
         string s; cin >> s;
         ll pos; cin >> pos;
-        ll n = 0;
+        pos--;
 
-        int cur = 0;
-        int i = s.size();
-        while (i > 0) {
-            cur += i;
-            if (cur >= pos) {
-                pos = i - (cur - pos) - 1; 
-                n = i;
-                break;
+        vector<char> st;
+        int len = s.length();
+        bool ok = pos < len;
+        s += '$';
+        for (auto c: s) {
+            while (!ok && st.size() > 0 && st.back() > c) {
+                pos -= len;
+                len--;
+
+                st.pop_back();
+
+                if (pos < len) ok = true;
             }
-            i--;
+
+            st.push_back(c);
         }
 
-        vector<pair<char, int>> a;
-
-        for (int i = 0; i < s.size(); i++) {
-            a.push_back({s[i], i});
-        }
-
-        sort(a.begin(), a.end());
-
-        vector<pair<int, char>> new_a;
-        for (int i = 0; i < n; i++) {
-            new_a.push_back({a[i].s, a[i].f});
-        }
-
-        sort(new_a.begin(), new_a.end());
-
-        cout << new_a[pos].s;
+        cout << st[pos];
     }
 }
