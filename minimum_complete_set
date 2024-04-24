@@ -1,0 +1,33 @@
+n = 10
+root = None
+
+dp = [[-1 for i in range(n)] * 2]
+
+def solve(v, take):
+    if dp[v.idx][take]:
+        return dp[v.idx][take]
+
+    if is_leaf(v):
+        if take:
+            return v.w
+        else:
+            return 0
+    
+    if take:
+        sum = 0
+        for child in v.children:
+            sum += solve(child, False)
+        
+        dp[v.idx][take] = v.w + sum
+    else:
+        sum_not_take = 0
+        sum_take = 0
+        for child in v.children:
+            sum_not_take += solve(child, False)
+            sum_take += solve(child, True)
+        
+        dp[v.idx][take] = min(v.w + sum_not_take, sum_take)
+    
+    return dp[v.idx][take]
+
+ans = max(solve(root, True), solve(root, False))

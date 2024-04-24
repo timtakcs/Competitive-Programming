@@ -40,7 +40,7 @@ bool bipartile(int &idx, map<string, vector<string>> &adj, vector<set<string>> &
                 q.push(u);
             } else if (sets[idx].count(u)){
                 return false;
-            }
+            }https://www.google.com/url?sa=i&url=https%3A%2F%2Fsteamcommunity.com%2Fsharedfiles%2Ffiledetails%2F%3Fid%3D1195180273&psig=AOvVaw0x8r8VYX6nBlC8TLtu1whw&ust=1709939078418000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOCc6Myh44QDFQAAAAAdAAAAABAD
         }
     }
 

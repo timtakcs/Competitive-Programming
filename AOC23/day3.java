@@ -139,7 +139,6 @@ public class day3 {
                     if (nx < row.length() && nx >= 0 && ny < mat.size() && ny >= 0) {
                         char c = mat.get(ny).charAt(nx);
                         if (c == '*' && !m.get(new Pair(ny, nx)).contains(Integer.parseInt(cur))) {
-                            System.out.println(ny + " " + nx + " : found match");
                             m.get(new Pair(ny, nx)).add(Integer.parseInt(cur));
                         }
                     }
@@ -165,10 +164,6 @@ public class day3 {
                 }
             }
         }
-
-        for (Pair idx : m.keySet()) {
-            System.out.println(idx);
-        }
     
         for (int r = 0; r < mat.size(); r++) {
             String row = mat.get(r);
@@ -189,11 +184,6 @@ public class day3 {
     
         for (ArrayList<Integer> val : m.values()) {
             if (val.size() == 2) {
-                for (Integer x: val) {
-                    System.out.print(x + " ");
-                }
-                System.out.println();
-
                 int prod = 1;
                 for (Integer x : val) {
                     prod *= x;

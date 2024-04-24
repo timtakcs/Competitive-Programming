@@ -23,8 +23,6 @@ void euler_tour(vector<int> &first, vector<int> &traversal, vector<int> &depth, 
     for (auto child: tree[node]) {
         if (!vis[child]) {
 
-            
-
             euler_tour(first, traversal, depth, vis, tree, child, d+1);
             traversal.push_back(node);
             depth.push_back(d);

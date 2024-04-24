@@ -1,7 +1,5 @@
 #include <iostream>
 #include <bits/stdc++.h>
-#include <map>
-using namespace std;
 #define ll long long
 #define f first
 #define s second
@@ -9,7 +7,8 @@ using namespace std;
 #define pb push_back
 #define mt make_tuple
 #define pii pair<int, int>
-#pragma GCC optimize "trapv"
+
+using namespace std;
 
 constexpr int INF = 1e9;
 constexpr int MOD = 1e9 + 7;
@@ -18,44 +17,48 @@ void setIO(string name = "") {
     ios_base::sync_with_stdio(0); cin.tie(0); 
 }
 
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 int main() {
     setIO();
 
     int t; cin >> t;
     while (t--) {
-        int n; cin >> n;
+        int n, k; cin >> n >> k;
 
         vector<ll> a(n);
-        vector<ll> b(n);
+        vector<ll> x(n);
 
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
 
         for (int i = 0; i < n; i++) {
-            cin >> b[i];
+            cin >> x[i];
         }
 
-        map<ll, ll> cnt;
-        ll mx = -2 * INF;
+        vector<ll> sum(n + 1);
 
         for (int i = 0; i < n; i++) {
-            ll x = a[i] - b[i];
-            cnt[x]++;
-            mx = max(mx, x);
+            ll dist = abs(x[i]);
+
+            sum[dist] += a[i];
         }
 
-        ll ans = cnt[mx];
-        cout << ans << endl;
-        for (int i = 0; i < n; i++) {
-            if (a[i] - b[i] == mx) cout << i + 1 << " ";
+        ll over = 0;
+        bool possible = true;
+
+        for (int i = 1; i <= n; i++) {
+            if (sum[i] > k + over) {
+                possible = false;
+                break;
+            } else {
+                over = k + over - sum[i];
+            }
         }
-        cout << endl;
+
+        if (possible) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
     }
 }
